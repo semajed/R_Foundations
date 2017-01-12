@@ -1,11 +1,12 @@
 ## A vector is one of the most basic data structures you'll encounter in R
-## A vector can be of many types (int, numeric, character, logical and factor)
+## Vectors can be of many types (int, numeric, character, logical and factor)
 
+## a single vector is 1 dimensional of a single type
 
 
 ################## numeric vector ########################
 
-
+?vector
 ## create a numeric vector
 gpa = c(1.81, 3.91, 3.45, 3.65)
 ## note: an int is a number with no decimals, only whole numbers
@@ -26,6 +27,9 @@ str(gpa)
 class(gpa)
 summary(gpa)
 
+?str
+?class
+?summary
 
 
 ################## char vector ########################

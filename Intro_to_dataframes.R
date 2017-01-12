@@ -21,7 +21,6 @@ df1 = data.frame(first_name, gender, gpa, pass, stringsAsFactors = FALSE)
 
 
 
-
 ################## extracting from data frame ########################
 
 ## we are now dealing with multiple vectors stacked into one variable
