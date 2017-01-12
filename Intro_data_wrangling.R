@@ -13,10 +13,13 @@ library("tidyr")
 
 ######### TIDYR ###########
 ## This package helps you get your data to R specs
-## gather() and spread()
+## gather(), separate(), unite(), spread()
 ## both rely on key value pairs
 
-messy = data.frame(
+### GATHER FUNCTION ###
+?gather
+
+messy1 = data.frame(
   name = c("Wilbur", "Petunia", "Gregory"),
   a = c(67, 80, 64),
   b = c(56, 90, 50),
@@ -27,8 +30,47 @@ messy = data.frame(
 ## this data is considered WIDE since heartrate is in multiple columns
 ## first identify the variables: name, drug, heart rate
 ## Do they follow the rules of tidyr?
-gather(messy, drug, heartrate,a,b)
-?gather
+messy1 = gather(messy1, drug, heartrate,a,b,c)
+messy1
+
+
+### SEPARATE FUNCTION ###
+?separate
+messy2 = data.frame(
+  name = c("Wilbur_m", "Petunia_f", "Gregory_m"),
+  a = c(67, 80, 64),
+  b = c(56, 90, 50),
+  c = c(99, 30, 40)
+)
+
+messy2 = separate(messy2, name, c("name","gender"), sep="_")
+messy2 = gather(messy2, drug, heartrate,a,b,c)
+messy2
+
+
+### UNITE FUNCTION ###
+?unite
+messy3 = data.frame(
+  first_name = c("Wilbur_m", "Petunia_f", "Gregory_m"),
+  last_name = c("Smith", "Gordon", "Jones"),
+  a = c(67, 80, 64),
+  b = c(56, 90, 50),
+  c = c(99, 30, 40)
+)
+
+messy3 = gather(messy3, drug, heartrate,a,b,c)
+messy3 = separate(messy3, first_name, c("first_name","gender"), sep="_")
+messy3 = unite(messy3, full_name, 1, 3, sep=" ")
+messy3
+
+
+### SPREAD FUNCTION ###
+?spread
+messy3 = spread(messy3, drug, heartrate)
+messy3
+
+
+
 
 
 
