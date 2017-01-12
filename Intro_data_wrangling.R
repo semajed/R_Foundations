@@ -19,13 +19,16 @@ library("tidyr")
 messy = data.frame(
   name = c("Wilbur", "Petunia", "Gregory"),
   a = c(67, 80, 64),
-  b = c(56, 90, 50)
+  b = c(56, 90, 50),
+  c = c(99, 30, 40)
 )
 
-## what's wrong with this data?
+## what's wrong with this data? 
+## this data is considered WIDE since heartrate is in multiple columns
 ## first identify the variables: name, drug, heart rate
 ## Do they follow the rules of tidyr?
-messy %>% gather(drug, heartrate, a:b)
+gather(messy, drug, heartrate,a,b)
+?gather
 
 
 
