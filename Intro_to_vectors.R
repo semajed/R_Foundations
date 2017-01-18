@@ -1,3 +1,9 @@
+## GOAL ##
+## we will be creating multiple vectors which we will then tie together to become a dataframe
+
+
+
+
 ## A vector is one of the most basic data structures you'll encounter in R
 ## Vectors can be of many types (int, numeric, character, logical and factor)
 
@@ -9,11 +15,6 @@
 ?vector
 ## create a numeric vector
 gpa = c(1.81, 3.91, 3.45, 3.65)
-## note: an int is a number with no decimals, only whole numbers
-
-## combine function - used to help create just about anything. You will use this regularly.
-## use ?c to learn more about a standard function
-?c
 
 ## R is a non-zero based language
 gpa[1]

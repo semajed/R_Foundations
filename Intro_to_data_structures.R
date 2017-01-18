@@ -1,7 +1,38 @@
-## We were introduced to vectors and dataframes, 
-#### which are the most common type of data structures you'll use.
-
 ## Now we'll look at a matrix, an array, and a list.
+
+################ VECTOR DATA STRUCTURE ################
+
+## a single vector is 1 dimensional with a single type
+
+?vector
+
+my_vector = c(14,15,16,17)
+my_vector
+
+?str
+??summary
+
+str(my_vector)
+summary(my_vector)
+
+my_vector[2]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ################ MATRIX DATA STRUCTURE ################
 
@@ -12,13 +43,21 @@
 my_matrix = matrix(c(1,2,3,4,5,6,7,8,9),nrow=3,ncol=3)
 my_matrix
 summary(my_matrix)
+str(my_matrix)
 
 ## byrow tells the matrix how the vectors are to be structured.
 my_matrix = matrix(c(1,2,3,4,5,6,7,8,9),nrow=3,ncol=3, byrow=TRUE)
 my_matrix
 summary(my_matrix)
 
+
 ## now retrieve single items from the matrix
+
+
+## data_structure[row, column]
+
+
+
 my_matrix[2,2]
 my_matrix[,3]
 my_matrix[1,]
@@ -26,7 +65,31 @@ my_matrix[7]
 
 ## now retrieve multiple items from the matrix
 my_matrix[c(1,3),]
-my_matrix[,c(2,4)]
+my_matrix[,c(2,3)]
+
+my_matrix[1:2,]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ################ ARRAY DATA STRUCTURE ################
@@ -39,6 +102,24 @@ my_matrix[,c(2,4)]
 
 ?array
 ## we aren't going to go over arrays since this isn't the focus of what we will be doing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ################ LIST DATA STRUCTURE ################
 ## 1 dimensional, multiple types
@@ -56,10 +137,10 @@ x = list(n, s, b, 3)
 ## list slicing
 my_list[2]
 x[3]
-
+x
 
 ## naming the data in a list
-v = list(bob=c(2, 3, 5), john=c("aa", "bb")) 
+v = list(bob=c(2, 3, 5), john=c("aa", "bb"))
 v
 v$bob
 v$john
