@@ -7,7 +7,7 @@ library("tidyr")
 ## GROUND RULES FOR HOW R WORKS WITH DATASETS BEST ##
 ## 1) Each variable in the data set is placed in its own column
 ## 2) Each observation is placed in its own row
-## 3) Each value is placed in its own cell*
+## 3) Each value is placed in its own cell
 
 
 
@@ -173,22 +173,5 @@ mydata_allmutate = mutate_all(mydata, funs("new"=.*1000))
 ## join()
 ## intersect()
 ## union()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

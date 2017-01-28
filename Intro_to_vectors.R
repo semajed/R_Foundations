@@ -33,6 +33,19 @@ summary(gpa)
 ?summary
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 ################## char vector ########################
 
 
@@ -45,6 +58,17 @@ summary(first_name)
 ## different results with summary because it is non-numeric
 
 
+
+
+
+
+
+
+
+
+
+
+
 ################## logical vector ########################
 
 
@@ -55,19 +79,34 @@ class(pass)
 summary(pass)
 
 
+
+
+
+
+
+
+
+
+
+
 ################## factor vector ########################
 
 
 ## create a factor vector
 gender = c("f", "m", "m", "f")
 str(gender)
-## we can see that this is still a chr vector, is that what we want? 
-## Aren't male and female categories, not unique descriptors?
+
+
 ## Factors are like buckets of categories, use these when dealing with categorical variables
 gender = factor(gender)
 str(gender)
 class(gender)
 summary(gender)
+
+
+
+
+
 
 ## create another factor vector for favorite color of each person, but use concise code
 fcolor = factor(c("blue", "green", "green", "red"))
@@ -79,3 +118,4 @@ summary(fcolor)
 fcolor
 fcolor = factor(c("blue", "green", "green", "red"), levels = c("red", "green", "blue"))
 fcolor
+

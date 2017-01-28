@@ -10,21 +10,26 @@ ls()
 
 
 ################## create data frame ########################
-df1 = data.frame(first_name, gender, gpa, pass)
+?data.frame
+df1 = data.frame(first_name, gender, gpa, pass, fcolor)
 df1
 str(df1)
 class(df1)
 summary(df1)
 
 ## You'll notice that first_name was converted to a factor. Do we want that? Is that categorical?
-df1 = data.frame(first_name, gender, gpa, pass, stringsAsFactors = FALSE)
+
+
+
+df1 = data.frame(first_name, gender, gpa, pass, fcolor, stringsAsFactors = FALSE)
 
 
 
 ################## extracting from data frame ########################
 
 ## we are now dealing with multiple vectors stacked into one variable
-## df1[rows, columns]
+
+## data_structure[rows, columns]
 
 ## get the first, first_name 
 df1[1,1]
@@ -46,6 +51,14 @@ df1[c(1,4),]
 
 ## get the names and whether or not they passed
 df1[,c(1,4)]
+
+
+## CONDITIONAL EXTRACTION
+
+df1[which(df1$pass==TRUE),]
+
+
+df1[which(df1$gpa>3.00),]
 
 
 
