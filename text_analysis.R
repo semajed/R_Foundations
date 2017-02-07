@@ -140,11 +140,37 @@ wordcloud(gandhi_speech,colors=c("blue","green"))
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 #### TWITTER ####
 ??twitter
 ## keep your API info secret
 twitter_auth = read.csv("../twitter_auth.csv")
 setup_twitter_oauth(twitter_auth$cons_key, twitter_auth$cons_secret, twitter_auth$acc_token, twitter_auth$acc_secret)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 caferio = searchTwitter("#caferio", n=5)
 head(caferio)
