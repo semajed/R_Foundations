@@ -35,6 +35,7 @@ my_csv_data1 = read.table("sampledata.csv")
 View(my_csv_data)
 View(my_csv_data1)
 
+## read.table is more generic, you need to specify what you want it to do
 my_csv_data2 = read.table("sampledata.csv", sep=",")
 View(my_csv_data2)
 
@@ -74,7 +75,16 @@ str(nba_data)
 head(nba_data)
 
 
+#### DATABASE CONNECTIONS ####
+## depending on the type of databse you want to connect to, you'll use specific packages for each
+## RMySQL, ROracle, RJDBC, and more
+## They all follow a similar pattern to connect
 
+library("RMySQL")
+mydb = dbConnect(MySQL(), user='user', password='password', dbname='database_name', host='host')
+dbListTables(mydb)
+myquery = dbSendQuery(mydb, "select * from some_table")
+close(mydb)
 
 
 
