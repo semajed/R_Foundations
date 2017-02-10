@@ -33,7 +33,6 @@ my_vector[2]
 
 
 
-
 ################ MATRIX DATA STRUCTURE ################
 
 ## a single matrix is 2 dimensional with a single type
@@ -70,38 +69,26 @@ my_matrix[,c(2,3)]
 my_matrix[1:2,]
 
 
+# another way to create lots of data fast in a matrix
+my_big_matrix = matrix(c(seq(from=-98,to=100,by=2)),nrow=10,ncol=10)
+my_big_matrix
+
+# using a matrix has the benefits of uniform data, you can perform massive operations quickly
+?apply
+# get the mean of all the columns
+apply(my_big_matrix, 2, mean)
+
+# sum all the rows
+apply(my_big_matrix, 1, sum)
+
+## even use custom functions to decide which items you want to affect
+# 
+apply(my_big_matrix, 1, function(x) mean(x[x>0]))
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-################ ARRAY DATA STRUCTURE ################
-
-## an array is multi-dimensional of a single type.
-## it is basically a collection of matrices
-## a one dimensional array is vector
-## a two dimensional array is a matrix
-## a three dimensional array is....an array
-
-?array
-## we aren't going to go over arrays since this isn't the focus of what we will be doing
 
 
 
@@ -127,7 +114,7 @@ my_matrix[1:2,]
 ## simple list
 my_list = list("look", 2, TRUE)
 
-
+#### you can make a list of other data structures: list of matrices, list of vectors
 ## lists of vectors
 n = c(2, 3, 5)
 s = c("aa", "bb", "cc", "dd", "ee") 
@@ -150,6 +137,49 @@ v$john
 ## We prefer dataframes.
 
 
+##### FACTORS #####
+## factors are categorical variables. They aren't really a data structure but they are a way to define how to handle the data.
+
+## create a vector
+
+schools = c("Brigham Young University", "Utah State University", "University of Utah", "Southern Utah University")
+class(schools)
+str(schools)
+
+# convert to factors
+school_factors = factor(schools)
+class(school_factors)
+str(school_factors)
+
+
+
+## look at your environment tab
+## you'll notice you still have access to the data you created previously
+## just because this is a different script doesn't mean you don't have access to other variables
+## this is called scope, or the defined area of existence for a variable
+## if we were to create a new project, that would create a new scope
+## ls() command also shows you the scope of your current environment variables
+ls()
+
+## right now we have separate columns of data that all relate to each other, we need to combine the data
+
+
+
+
+
+
+
+
+
+
+
+
+## PRACTICE
+
+# create a vector of first names of your friends
+# create a vector of logicals
+# create a matrix of anything
+# create factors for car types (honda, lexus, toyota, etc)
 
 
 

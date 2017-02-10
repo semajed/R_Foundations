@@ -181,20 +181,4 @@ mydata_allmutate = mutate_all(mydata, funs("new"=.*1000))
 
 
 
-####### APPLY package #######
-?apply
-m = matrix(c(seq(from=-98,to=100,by=2)),nrow = 10, ncol = 10)
-m
-apply(m,1,prod)
-apply(m,2,sum)
-apply(m, 2, function(x) mean(x[x>0]))
-
-## the family of apply functions: sapply, lapply, vapply, mapply
-?lapply
-## each of this have a different specialization and purpose
-
-
-
-
-
 
