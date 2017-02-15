@@ -10,7 +10,7 @@ my_vector = c(14,15,16,17)
 my_vector
 
 ?str
-??summary
+?summary
 
 str(my_vector)
 summary(my_vector)
@@ -65,6 +65,7 @@ my_matrix[7]
 ## now retrieve multiple items from the matrix
 my_matrix[c(1,3),]
 my_matrix[,c(2,3)]
+my_matrix[,2:3]
 
 my_matrix[1:2,]
 
@@ -72,6 +73,8 @@ my_matrix[1:2,]
 # another way to create lots of data fast in a matrix
 my_big_matrix = matrix(c(seq(from=-98,to=100,by=2)),nrow=10,ncol=10)
 my_big_matrix
+
+
 
 # using a matrix has the benefits of uniform data, you can perform massive operations quickly
 ?apply
@@ -137,19 +140,7 @@ v$john
 ## We prefer dataframes.
 
 
-##### FACTORS #####
-## factors are categorical variables. They aren't really a data structure but they are a way to define how to handle the data.
 
-## create a vector
-
-schools = c("Brigham Young University", "Utah State University", "University of Utah", "Southern Utah University")
-class(schools)
-str(schools)
-
-# convert to factors
-school_factors = factor(schools)
-class(school_factors)
-str(school_factors)
 
 
 

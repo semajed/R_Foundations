@@ -1,13 +1,12 @@
+
+
+
+
 ## GOAL ##
 ## we will be creating multiple vectors which we will then tie together to become a dataframe
 
 
 
-
-## A vector is one of the most basic data structures you'll encounter in R
-## Vectors can be of many types (int, numeric, character, logical and factor)
-
-## a single vector is 1 dimensional of a single type
 
 
 ################## numeric vector ########################
@@ -118,7 +117,7 @@ summary(fcolor)
 fcolor
 fcolor = factor(c("blue", "green", "green", "red"), levels = c("red", "green", "blue"))
 fcolor
-
+summary(fcolor)
 
 
 
@@ -138,7 +137,7 @@ summary(df1)
 ## You'll notice that first_name was converted to a factor. Do we want that? Is that categorical?
 
 df1 = data.frame(first_name, gender, gpa, pass, fcolor, stringsAsFactors = FALSE)
-
+df1
 
 
 ################## extracting from data frame ########################
@@ -160,7 +159,7 @@ df1[4,]
 df1[,3]
 
 ## get Jimmy and Luke's data
-df1[2:3,]
+df1[2:4,]
 
 ## get Alice and Sarah's data
 df1[c(1,4),]
@@ -178,6 +177,4 @@ df1[which(df1$gpa>3.00),]
 
 
 #### CLASS PRACTICE ####
-
-## create a vector
 
