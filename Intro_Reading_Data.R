@@ -69,6 +69,9 @@ my_csv_data = read.csv("assets/sales_per_year_per_state.csv", na.strings = c("No
 
 str(my_csv_data)
 
+##  stringsAsFactors
+my_csv_data = read.csv("assets/sales_per_year_per_state.csv", na.strings = c("No Value", NA), stringsAsFactors = FALSE)
+
 
 
 
