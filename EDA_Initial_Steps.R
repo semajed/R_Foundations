@@ -1,6 +1,14 @@
-library(dplyr)
+##### Why do EDA? ############
+# Understand data properties
+# Find patterns in data
+# Suggest modeling strategies
+# “Debug” analyses
+
+
+
 
 bike_buyers = read.csv("assets/bike_buyers.csv")
+
 
 #### Get high level overview of data ####
 str(bike_buyers)
@@ -11,6 +19,9 @@ View(bike_buyers)
 head(bike_buyers)
 
 ## QUESTION: do you need to adjust anything at this point? data types, structure of data, etc
+
+
+
 
 # if we wanted to avoid converting strings to factors, how would we do that?
 
@@ -49,6 +60,7 @@ hist(bike_buyers$Income)
 plot(density(bike_buyers$Income), main="Income Density Spread")
 ?density
 
+pairs(bike_buyers)
 
 
 ## EDUCATION: categorical, so it's discrete
@@ -65,8 +77,19 @@ pie(table(bike_buyers$Marital.Status), main="Married vs Single Buyers")
 ?table
 ?pie
 
+## CHILDREN
 
-# CLASS WORK: how far do these people commute?
+# change to factor
+bike_buyers$Children = factor(bike_buyers$Children)
+summary(bike_buyers$Children)
+plot(bike_buyers$Children, xlab = "Num. of Children", ylab="Frequency")
+
+# what about those who bought a bike, specifically?
+library("dplyr")
+bought = filter(bike_buyers, Purchased.Bike == "Yes")
+plot(bought$Children)
+
+# CLASS WORK: what is the most common commute distance? Visualize it
 # Did more people buy bikes or not buy bikes?
 
 summary(bike_buyers$Commute.Distance)
@@ -116,6 +139,7 @@ colfill<-c(2:(2+length(levels(education_legend))))
 legend(locator(1), levels(education_legend), fill=colfill)
 
 
+
 ####################################### categorical & categorical
 # bought a bike vs commute distance
 ?xtabs
@@ -125,9 +149,10 @@ xtabs(~Education+Purchased.Bike, bike_buyers)
 
 
 
-
 ####################################### continuous & continuous
 str(bike_buyers)
+
+scatter.smooth(bike_buyers$Age, bike_buyers$Income)
 
 # let's use a better dataset
 cars = mtcars
@@ -136,6 +161,43 @@ scatter.smooth(cars$mpg, cars$hp, xlab="MPG", ylab="Number of Horses")
 
 
 
+####################################### descriptive models
+library(help="datasets")
+
+## single variables
+head(faithful)
+# x first, y second
+plot(faithful$eruptions, faithful$waiting, xlab="Eruption Duration", ylab="Time Waited", main="Eruption Analysis")
+
+# y first, x second
+?lm
+lm(faithful$eruptions ~ faithful$waiting)
+
+# add to most recent graph
+abline(lm(faithful$waiting~faithful$eruptions), col="red")
+
+
+
+## multiple variables
+head(airquality)
+plot(airquality$Ozone, airquality$Temp)
+abline(lm(airquality$Temp ~ airquality$Ozone))
+
+lm(data = airquality[,c(1,3,4)])
+
+lm(data = airquality[,c(3,1,4)])
+
+
+plot(bike_buyers$Children, bike_buyers$Income)
+abline(lm(bike_buyers$Income ~ bike_buyers$Children),col="red")
+
+# when you have tons of numeric variables
+?pairs
+pairs(airquality)
+
+library(ggplot2)
+??plotmatrix
+plotmatrix(with(airquality))
 
 ####################################### what's next? Prepare for predictive modeling
 
@@ -166,6 +228,7 @@ qplot(cars$mpg, cars$hp, data=mtcars, geom=c("point", "smooth"))
 purchase_to_edu = table(bike_buyers$Purchased.Bike, bike_buyers$Education)
 chisq.test(purchase_to_edu)
 ?chisq.test
+
 
 
 

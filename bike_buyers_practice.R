@@ -16,14 +16,6 @@ summary(bike_buyers)
 ## What are some interesting questions we could ask this data?
 
 
-## PULL THE INCOME VARIABLE INTO IT'S OWN VECTOR
-income = bike_buyers$Income
-# why get a single variable? You can start early analysis on it. We'll go over this more later.
-
-hist(income)
-
-
-
 
 ## PRACTICE SUBSETTING
 # get all married observations
@@ -38,6 +30,7 @@ hs_or_partial_col = bike_buyers[which(bike_buyers$Education == "High School" | b
 ## get all observations who own 3 cars or more
 cars_plus_3 = bike_buyers[which(bike_buyers$Cars>=3),]
 
+cars_plus_3 = subset(bike_buyers, Cars >= 3 & Marital.Status == "Married")
 
 
 
