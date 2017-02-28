@@ -126,6 +126,9 @@ by(bike_buyers$Income, bike_buyers$Education, summary)
 by(bike_buyers$Income, bike_buyers$Education, mean)
 by(bike_buyers$Income, bike_buyers$Education, median)
 
+
+
+
 boxplot(bike_buyers$Income~bike_buyers$Education, notch=TRUE,col=c("grey","gold","grey","grey","grey"), main="Income distribution among education levels")
 
 
@@ -144,8 +147,21 @@ legend(locator(1), levels(education_legend), fill=colfill)
 # bought a bike vs commute distance
 ?xtabs
 xtabs(~Education+Purchased.Bike, bike_buyers)
+plot(xtabs(~Education+Purchased.Bike, bike_buyers), main="Bike Buyers and Education Levels")
 
+xtabs(~Occupation+Purchased.Bike, bike_buyers)
+plot(xtabs(~Occupation+Purchased.Bike, bike_buyers), main="Bike Buyers and Occupation")
 
+## what if you want to drill down into the details?
+
+library(gmodels)
+?CrossTable
+
+CrossTable(x=bike_buyers$Education, bike_buyers$Purchased.Bike, chisq = TRUE)
+CrossTable(x=bike_buyers$Occupation, bike_buyers$Purchased.Bike, chisq = TRUE)
+
+## use chi-sq to find p-value, which will show significance
+## p-value > 0.05 is NOT significant
 
 
 
