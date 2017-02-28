@@ -157,8 +157,8 @@ plot(xtabs(~Occupation+Purchased.Bike, bike_buyers), main="Bike Buyers and Occup
 library(gmodels)
 ?CrossTable
 
-CrossTable(x=bike_buyers$Education, bike_buyers$Purchased.Bike, chisq = TRUE)
-CrossTable(x=bike_buyers$Occupation, bike_buyers$Purchased.Bike, chisq = TRUE)
+CrossTable(x=bike_buyers$Education, bike_buyers$Purchased.Bike, chisq = TRUE, prop.t = FALSE)
+CrossTable(x=bike_buyers$Occupation, bike_buyers$Purchased.Bike, chisq = TRUE, prop.t = FALSE)
 
 ## use chi-sq to find p-value, which will show significance
 ## p-value > 0.05 is NOT significant
@@ -173,8 +173,6 @@ scatter.smooth(bike_buyers$Age, bike_buyers$Income)
 # let's use a better dataset
 cars = mtcars
 scatter.smooth(cars$mpg, cars$hp, xlab="MPG", ylab="Number of Horses")
-
-
 
 
 ####################################### descriptive models
@@ -197,15 +195,17 @@ abline(lm(faithful$waiting~faithful$eruptions), col="red")
 ## multiple variables
 head(airquality)
 plot(airquality$Ozone, airquality$Temp)
-abline(lm(airquality$Temp ~ airquality$Ozone))
+abline(lm(airquality$Temp ~ airquality$Ozone), col="red")
 
 lm(data = airquality[,c(1,3,4)])
 
-lm(data = airquality[,c(3,1,4)])
+summary(lm(data = airquality[,c(3,1,4)]))
 
 
 plot(bike_buyers$Children, bike_buyers$Income)
 abline(lm(bike_buyers$Income ~ bike_buyers$Children),col="red")
+
+summary(lm(bike_buyers$Income ~ bike_buyers$Children))
 
 # when you have tons of numeric variables
 ?pairs
@@ -235,16 +235,6 @@ cor.test(cars$mpg, cars$hp, method="spearman")
 library(ggplot2)
 qplot(cars$mpg, cars$hp, data=mtcars, geom=c("point", "smooth"))
 ?qplot
-
-
-
-#### Categorical Variables Significance ####
-
-# testing a single variable against another single variable
-purchase_to_edu = table(bike_buyers$Purchased.Bike, bike_buyers$Education)
-chisq.test(purchase_to_edu)
-?chisq.test
-
 
 
 

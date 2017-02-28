@@ -15,6 +15,12 @@ my_function <- function(argument1, argument2){
 
 
 
+
+
+
+
+
+
 ## check if a number is even
 is_even <- function(number){
   remainder = number %% 2
