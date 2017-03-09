@@ -1,4 +1,14 @@
-## Now we'll look at a matrix, an array, and a list.
+## data moment
+## schedule - submitting data moment, checkpoint 1, r basics assignment open for a week
+## content: videos
+## github extra credit
+
+
+
+
+
+
+
 
 ################ VECTOR DATA STRUCTURE ################
 
@@ -41,6 +51,7 @@ my_vector[2]
 
 my_matrix = matrix(c(1,2,3,4,5,6,7,8,9),nrow=3,ncol=3)
 my_matrix
+
 summary(my_matrix)
 str(my_matrix)
 
@@ -74,7 +85,8 @@ my_matrix[1:2,]
 my_big_matrix = matrix(c(seq(from=-98,to=100,by=2)),nrow=10,ncol=10)
 my_big_matrix
 
-
+tail(my_big_matrix,1)
+head(my_big_matrix,1)
 
 # using a matrix has the benefits of uniform data, you can perform massive operations quickly
 ?apply
@@ -122,12 +134,12 @@ my_list = list("look", 2, TRUE)
 n = c(2, 3, 5)
 s = c("aa", "bb", "cc", "dd", "ee") 
 b = c(TRUE, FALSE, TRUE, FALSE, FALSE)
-x = list(n, s, b, 3)
+x = list(n, s, b=b, 3)
 
 ## list slicing
 my_list[2]
 x[3]
-x
+x$b[1]
 
 ## naming the data in a list
 v = list(bob=c(2, 3, 5), john=c("aa", "bb"))
@@ -160,18 +172,12 @@ ls()
 
 
 
-
-
-
-
-
 ## PRACTICE
 
 # create a vector of first names of your friends
 # create a vector of logicals
 # create a matrix of anything
+
 # create factors for car types (honda, lexus, toyota, etc)
-
-
 
 

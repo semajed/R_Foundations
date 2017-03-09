@@ -1,7 +1,6 @@
 
 
 
-
 ## GOAL ##
 ## we will be creating multiple vectors which we will then tie together to become a dataframe
 
@@ -105,8 +104,6 @@ summary(gender)
 
 
 
-
-
 ## create another factor vector for favorite color of each person, but use concise code
 fcolor = factor(c("blue", "green", "green", "red"))
 str(fcolor)
@@ -176,5 +173,10 @@ df1[which(df1$pass==TRUE),]
 df1[which(df1$gpa>3.00),]
 
 
-#### CLASS PRACTICE ####
+
+
+## QUESTIONS
+# What to do when you don't know what a function does?
+# What key words could you google for today's material?
+
 

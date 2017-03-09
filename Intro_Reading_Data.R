@@ -1,3 +1,13 @@
+#### BEFORE WE BEGIN ####
+## Rstudio wants to know where to save your files. Create a project to make that easier. ##
+## Go download "sales_per_year_per_state" from learningsuite -> content
+## Go download "bike_buyers.csv" from learningsuite -> content
+## Go Download "ZapataShoes.csv" from learningsuite -> content
+
+
+
+
+
 ## READING IN DATA ##
 
 
@@ -36,6 +46,8 @@ my_txt_data = read.table(my_file_name)
 # or
 my_txt_data = read.table("assets/sample_text_file.txt")
 
+my_txt_data
+
 ## common sep values = comma, pipe, fixed space
 str(my_txt_data)
 
@@ -56,26 +68,47 @@ str(my_txt_data)
 
 #### CSV FILE ####
 my_csv_data = read.csv("assets/sales_per_year_per_state.csv")
-my_csv_data1 = read.table("assets/sales_per_year_per_state.csv")
 
 View(my_csv_data)
-View(my_csv_data1)
+
+
+
+
+
 
 ## read.table is more generic, you need to specify what you want it to do
-my_csv_data2 = read.table("assets/sales_per_year_per_state.csv", sep=",")
+my_csv_data2 = read.table("assets/sales_per_year_per_state.csv", sep=",", header = T)
 View(my_csv_data2)
+## are the headers right?
+
+
+
+
+
+str(my_csv_data)
+View(my_csv_data)
+
 
 my_csv_data = read.csv("assets/sales_per_year_per_state.csv", na.strings = c("No Value", NA))
 
 str(my_csv_data)
+View(my_csv_data)
 
-##  stringsAsFactors
+
+
+
+
+
+
+
+##  stringsAsFactors?
 my_csv_data = read.csv("assets/sales_per_year_per_state.csv", na.strings = c("No Value", NA), stringsAsFactors = FALSE)
+str(my_csv_data)
 
+## now what if I wanted ONE of those to remain a factor?
+my_csv_data$Index = as.factor(my_csv_data$Index)
 
-
-
-
+str(my_csv_data)
 
 
 
