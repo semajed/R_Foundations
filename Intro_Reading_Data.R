@@ -8,6 +8,14 @@
 
 
 
+
+
+
+
+
+
+
+
 ## READING IN DATA ##
 
 
@@ -41,12 +49,14 @@
 
 #### TXT FILE ####
 
+
+
 my_file_name = "assets/sample_text_file.txt"
 my_txt_data = read.table(my_file_name)
 # or
 my_txt_data = read.table("assets/sample_text_file.txt")
 
-my_txt_data
+View(my_txt_data)
 
 ## common sep values = comma, pipe, fixed space
 str(my_txt_data)
@@ -67,17 +77,19 @@ str(my_txt_data)
 
 
 #### CSV FILE ####
+?read.csv
 my_csv_data = read.csv("assets/sales_per_year_per_state.csv")
 
+?View
 View(my_csv_data)
 
 
 
 
-
+?read.table
 
 ## read.table is more generic, you need to specify what you want it to do
-my_csv_data2 = read.table("assets/sales_per_year_per_state.csv", sep=",", header = T)
+my_csv_data2 = read.table("assets/sales_per_year_per_state.csv", sep=",",header= T)
 View(my_csv_data2)
 ## are the headers right?
 
@@ -106,11 +118,12 @@ my_csv_data = read.csv("assets/sales_per_year_per_state.csv", na.strings = c("No
 str(my_csv_data)
 
 ## now what if I wanted ONE of those to remain a factor?
+
 my_csv_data$Index = as.factor(my_csv_data$Index)
 
+#= as.factor(my_csv_data$Index)
+
 str(my_csv_data)
-
-
 
 
 
@@ -131,6 +144,7 @@ View(my_xl_data)
 wb = loadWorkbook("assets/excel_data_sample.xlsx")
 ?readWorksheet
 my_xl_data = readWorksheet(wb, sheet=1)
+View(my_xl_data)
 
 # shortcut
 ?readWorksheetFromFile
@@ -185,16 +199,19 @@ library(XML)
 
 
 #### HTML TABLES ####
-
-?readHTMLTable
+??read
+library(XML)
 my_url = "http://basketball.realgm.com/nba/stats"
 nba_data = readHTMLTable(my_url, which=1)
 head(nba_data)
 str(nba_data)
 
+?readHTMLTable
 nba_data = readHTMLTable(my_url, which=1, stringsAsFactors=FALSE,colClasses=c("numeric","character","factor",rep("numeric",90)))
 head(nba_data)
 str(nba_data)
+
+summary(nba_data)
 
 
 
@@ -219,10 +236,14 @@ str(nba_data)
 
 library("RMySQL")
 ?dbConnect
-mydb = dbConnect(MySQL(), user='user', password='password', dbname='database_name', host='host')
+
+myconn = dbConnect(MySQL(), user='user', password='password', dbname='database_name', host='host')
+
 dbListTables(mydb)
+
 myquery = dbSendQuery(mydb, "select * from some_table")
-close(mydb)
+
+close(myconn)
 
 
 
