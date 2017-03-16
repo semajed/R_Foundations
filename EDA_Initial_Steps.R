@@ -114,6 +114,14 @@ plot(bike_buyers$Purchased.Bike)
 
 
 
+
+
+
+
+
+
+
+
 ######################### NOTES #########################
 #### Examine multivariate data ####
 ### Three broad classes of multivariate analysis:
@@ -126,8 +134,18 @@ plot(bike_buyers$Purchased.Bike)
 
 ## Types of graphs to use:
 # scatter plot
+# density plots
+# box plots
 
 ######################### NOTES #########################
+
+
+
+
+
+
+
+
 
 ####################################### categorical & continuous 
 
@@ -140,7 +158,7 @@ by(bike_buyers$Income, bike_buyers$Education, median)
 
 
 ?boxplot
-boxplot(bike_buyers$Income~bike_buyers$Education, notch=TRUE,col=c("grey","gold","grey","grey","grey"), main="Income distribution among education levels")
+boxplot(bike_buyers$Income~bike_buyers$Education, notch=T,col=c("grey","gold","grey","grey","grey"), main="Income distribution among education levels")
 
 ?sm
 library(sm)
@@ -180,11 +198,11 @@ CrossTable(bike_buyers$Occupation, bike_buyers$Purchased.Bike, chisq = TRUE, pro
 ## Explore the relationship between Purchased.Bike and another categorical variable of your choice (like commute distance)
 
 
-
 ####################################### continuous & continuous
 str(bike_buyers)
 
-scatter.smooth(bike_buyers$Age, bike_buyers$Income)
+?scatter.smooth
+scatter.smooth(bike_buyers$Age, bike_buyers$Income, main="Income to Age Relationship")
 
 # let's use a better dataset
 library(datasets)
