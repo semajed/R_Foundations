@@ -1,8 +1,8 @@
-##### Why do EDA? ############
-# Understand data properties
+##### Why do EDA? Exploratory Data Analysis ############
+# Understand variables
 # Find patterns in data
 # Suggest modeling strategies
-# “Debug” analyses
+
 
 
 
@@ -20,10 +20,11 @@ head(bike_buyers)
 
 ## QUESTION: do you need to adjust anything at this point? data types, structure of data, etc
 
+library("dplyr")
+bike_buyers = select(bike_buyers, -ID)
+summary(bike_buyers)
 
 
-
-# if we wanted to avoid converting strings to factors, how would we do that?
 
 
 ######################### NOTES #########################
@@ -31,13 +32,13 @@ head(bike_buyers)
 ## univariate data = samples of one variable
 ## univariate data analysis isn't concerned with the 'why'. It is just to describe the data as is.
 ## discrete variables vs continuous variables
-### discrete = an example is a die. It can only be the numbers 1 - 6.
-### continuous = an example is weight. It can be just about any number (within reason). It has no limits.
+### discrete = an example is a level of education within this dataset. It has a limited set of values.
+### continuous = an example is income. It can be just about any number.
 
 
 ## two key things to discover in EDA: central tendency, spread
 ### central tendency: what is a common value? what's the value around which the data is centered?
-### spread: how variable are the data points?
+### spread: how varied are the data points?
 
 ## Types of graphs to use:
 # box plot
@@ -58,10 +59,8 @@ boxplot(bike_buyers$Income)
 ## spread
 hist(bike_buyers$Income)
 plot(density(bike_buyers$Income), main="Income Density Spread")
+
 ?density
-
-pairs(bike_buyers)
-
 
 ## EDUCATION: categorical, so it's discrete
 summary(bike_buyers$Education)
@@ -72,12 +71,25 @@ plot(bike_buyers$Education)
 ## MARITAL STATUS: categorical, discrete
 summary(bike_buyers$Marital.Status)
 plot(bike_buyers$Marital.Status)
+pie(bike_buyers$Marital.Status, main="Married vs Single Customers")
+?pie
+
 
 pie(table(bike_buyers$Marital.Status), main="Married vs Single Buyers")
 ?table
 ?pie
 
 ## CHILDREN
+summary(bike_buyers$Children)
+plot(bike_buyers$Children)
+
+
+
+
+
+
+## is it the right data type? Probably not. We want more of a "count" for each number of children
+
 
 # change to factor
 bike_buyers$Children = factor(bike_buyers$Children)
@@ -87,10 +99,11 @@ plot(bike_buyers$Children, xlab = "Num. of Children", ylab="Frequency")
 # what about those who bought a bike, specifically?
 library("dplyr")
 bought = filter(bike_buyers, Purchased.Bike == "Yes")
-plot(bought$Children)
+plot(bought$Children, main = "Purchased Bikes yes, num children")
 
-# CLASS WORK: what is the most common commute distance? Visualize it
-# Did more people buy bikes or not buy bikes?
+# MINI CHALLENGE: 
+# What is the most common commute distance? Visualize it!
+# Did more people buy bikes or not buy bikes? Visualize it!
 
 summary(bike_buyers$Commute.Distance)
 plot(bike_buyers$Commute.Distance)
@@ -99,7 +112,6 @@ plot(bike_buyers$Commute.Distance)
 summary(bike_buyers$Purchased.Bike)
 plot(bike_buyers$Purchased.Bike)
 
-# you might ask yourself, what kind of people bought bikes?
 
 
 ######################### NOTES #########################

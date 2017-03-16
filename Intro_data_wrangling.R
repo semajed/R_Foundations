@@ -1,6 +1,6 @@
 
 library("tidyr")
-
+library("dplyr")
 
 
 ## What is tidy data? ##
@@ -49,7 +49,7 @@ messy2 = data.frame(
   c = c(99, 30, 40)
 )
 messy2
-
+?separate
 messy2 = separate(messy2, name, c("name","gender"), sep="_")
 messy2 = gather(messy2, drug, heartrate,a,b,c)
 messy2
@@ -72,7 +72,8 @@ messy3
 messy3 = separate(messy3, first_name, c("first_name","gender"), sep="_")
 messy3
 
-messy3 = unite(messy3, full_name, 1, 3, sep=" ")
+?unite
+messy3 = unite(messy3, full_name, 1, 3, sep=" ", remove = TRUE)
 messy3
 
 
@@ -106,7 +107,7 @@ View(bike_buyers)
 
 
 ######### SAMPLE FUNCTION ###########
-
+?sample_n
 ## select random rows by defining the number of rows you want
 s1 = sample_n(bike_buyers, 5)
 s1
@@ -115,16 +116,17 @@ s1
 
 ## select random rows by defining a percentage
 ## this will be more helpful when using predictive algorithms
+?sample_frac
 s2 = sample_frac(bike_buyers, 0.2)
-s2
-
+View(s2)
 
 
 ######### SELECT FUNCTION ###########
 ## pre-req: data must be in data frame format because it uses columns as params
+
 ?select
 ## from the df, get the marital status and income
-select(bike_buyers, Marital.Status, income)
+select(bike_buyers, Marital.Status, Income)
 ## uh oh, what happened? Correct it.
 
 
@@ -132,7 +134,7 @@ select(bike_buyers, Marital.Status, income)
 
 ## from the df, drop variables
 bike_buyers = select(bike_buyers, -ID)
-bike_buyers
+View(bike_buyers)
 
 ## why did I save that one to a variable? 
 
@@ -148,9 +150,10 @@ select(bike_buyers, -starts_with("Y"))
 ## but we don't want to drop any from this....so we won't.
 
 ## rearrange the data, put purchased bike as the first column
-bike_buyers = select(bike_buyers, Purchased.Bike, everything())
-head(bike_buyers)
 
+bike_buyers = select(bike_buyers, Purchased.Bike, Gender, everything())
+head(bike_buyers)
+View(bike_buyers)
 
 
 
@@ -158,6 +161,8 @@ head(bike_buyers)
 ######### RENAME FUNCTION ###########
 ## must be a data frame
 ## provide new name first, then old name that it is replacing
+
+
 ?rename
 bike_buyers = rename(bike_buyers, Purchased = Purchased.Bike)
 head(bike_buyers)
@@ -170,25 +175,27 @@ head(bike_buyers)
 
 ######### FILTER FUNCTION ###########
 ?filter
-## single criteria
+## multiple criteria
 filter(bike_buyers, Marital.Status=="Married")
-filter(bike_buyers, Marital.Status=="Married" & Purchased == "Yes")
 
+filter(bike_buyers, Marital.Status=="Married" & Purchased == "Yes" & Income > 100000)
 
+head(bike_buyers)
 
 ## multiple criteria, like occupation
 filter(bike_buyers, Occupation %in% c("Skilled Manual", "Manual"))
 
 
 
-filter(bike_buyers, Occupation %in% c("Skilled Manual", "Manual") & Purchased == "Yes" & Marital.Status == "Single")
+filter(bike_buyers, Occupation %in% starts_with("S") & Purchased == "Yes" & Marital.Status == "Single")
 
 
 
 
 
 ## not operator
-filter(bike_buyers, !Education =="High School")
+
+filter(bike_buyers, !Education =="High School" & !Education=="Graduate Degree")
 
 
 
@@ -206,7 +213,7 @@ arrange(bike_buyers, desc(Purchased), desc(Children))
 
 
 
-
+View(arrange(bike_buyers, desc(Purchased), desc(Children)))
 
 
 
@@ -217,10 +224,10 @@ arrange(bike_buyers, desc(Purchased), desc(Children))
 
 ######### MUTATE FUNCTION ###########
 ## talk about feature engineering
-
+?mutate
 ## adding a new var named change
-mutate(bike_buyers, age_to_income_ratio=Age/Income)
-
+bike_buyers = mutate(bike_buyers, age_to_income_ratio=Age/Income)
+View(bike_buyers)
 
 ######### OTHER THINGS DPLYR CAN DO ###########
 ## join()
@@ -252,7 +259,6 @@ head(shoes)
 
 ## get all buyers who purchased the Praia shoe
 
-## separate name into first name and last name columns. NOTE: we'll go over this one together, but try. You might need another package.
 
 
 ## SOLUTIONS

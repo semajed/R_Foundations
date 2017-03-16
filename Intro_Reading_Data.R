@@ -35,7 +35,7 @@
 
 
 
-
+my_txt_data = read.table("assets/sample_text_file.txt")
 
 
 
