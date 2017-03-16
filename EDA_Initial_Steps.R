@@ -133,20 +133,20 @@ plot(bike_buyers$Purchased.Bike)
 
 ## compare education to income
 ?by
-?boxplot
 by(bike_buyers$Income, bike_buyers$Education, summary)
 by(bike_buyers$Income, bike_buyers$Education, mean)
 by(bike_buyers$Income, bike_buyers$Education, median)
 
 
 
-
+?boxplot
 boxplot(bike_buyers$Income~bike_buyers$Education, notch=TRUE,col=c("grey","gold","grey","grey","grey"), main="Income distribution among education levels")
 
-
+?sm
 library(sm)
 sm.density.compare(bike_buyers$Income, bike_buyers$Education, xlab="Income")
 ?sm.density.compare
+
 # no legend...hm....
 education_legend = factor(bike_buyers$Education, labels = c("Bachelors", "Graduate Degree", "High School", "Partial College", "Partial High School")) 
 
@@ -156,11 +156,12 @@ legend(locator(1), levels(education_legend), fill=colfill)
 
 
 ####################################### categorical & categorical
-# bought a bike vs commute distance
+# bought a bike vs education
 ?xtabs
 xtabs(~Education+Purchased.Bike, bike_buyers)
 plot(xtabs(~Education+Purchased.Bike, bike_buyers), main="Bike Buyers and Education Levels")
 
+# bought a bike vs occupation
 xtabs(~Occupation+Purchased.Bike, bike_buyers)
 plot(xtabs(~Occupation+Purchased.Bike, bike_buyers), main="Bike Buyers and Occupation")
 
@@ -169,11 +170,14 @@ plot(xtabs(~Occupation+Purchased.Bike, bike_buyers), main="Bike Buyers and Occup
 library(gmodels)
 ?CrossTable
 
-CrossTable(x=bike_buyers$Education, bike_buyers$Purchased.Bike, chisq = TRUE, prop.t = FALSE)
-CrossTable(x=bike_buyers$Occupation, bike_buyers$Purchased.Bike, chisq = TRUE, prop.t = FALSE)
+CrossTable(bike_buyers$Education, bike_buyers$Purchased.Bike, chisq = TRUE, prop.t = F)
+CrossTable(bike_buyers$Occupation, bike_buyers$Purchased.Bike, chisq = TRUE, prop.t = F)
 
 ## use chi-sq to find p-value, which will show significance
 ## p-value > 0.05 is NOT significant
+
+### MINI CHALLENGE (time permitting)
+## Explore the relationship between Purchased.Bike and another categorical variable of your choice (like commute distance)
 
 
 
@@ -183,8 +187,20 @@ str(bike_buyers)
 scatter.smooth(bike_buyers$Age, bike_buyers$Income)
 
 # let's use a better dataset
+library(datasets)
 cars = mtcars
 scatter.smooth(cars$mpg, cars$hp, xlab="MPG", ylab="Number of Horses")
+
+
+
+
+
+
+
+
+
+
+
 
 
 ####################################### descriptive models
