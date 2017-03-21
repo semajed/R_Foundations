@@ -3,6 +3,9 @@
 # Find patterns in data
 # Suggest modeling strategies
 
+## Univariate Analysis
+## Multivariate Analysis
+
 
 
 
@@ -56,10 +59,11 @@ summary(bike_buyers)
 summary(bike_buyers$Income)
 boxplot(bike_buyers$Income)
 
+
 ## spread
 hist(bike_buyers$Income)
 plot(density(bike_buyers$Income), main="Income Density Spread")
-
+density(bike_buyers$Income)
 ?density
 
 ## EDUCATION: categorical, so it's discrete
@@ -73,7 +77,7 @@ summary(bike_buyers$Marital.Status)
 plot(bike_buyers$Marital.Status)
 pie(bike_buyers$Marital.Status, main="Married vs Single Customers")
 ?pie
-
+table(bike_buyers$Marital.Status)
 
 pie(table(bike_buyers$Marital.Status), main="Married vs Single Buyers")
 ?table
@@ -94,7 +98,7 @@ plot(bike_buyers$Children)
 # change to factor
 bike_buyers$Children = factor(bike_buyers$Children)
 summary(bike_buyers$Children)
-plot(bike_buyers$Children, xlab = "Num. of Children", ylab="Frequency")
+plot(bike_buyers$Children, xlab = "Num. of Children", ylab="Frequency",main="my graph")
 
 # what about those who bought a bike, specifically?
 library("dplyr")
@@ -158,7 +162,7 @@ by(bike_buyers$Income, bike_buyers$Education, median)
 
 
 ?boxplot
-boxplot(bike_buyers$Income~bike_buyers$Education, notch=T,col=c("grey","gold","grey","grey","grey"), main="Income distribution among education levels")
+boxplot(bike_buyers$Income~bike_buyers$Education, notch=T,col=c("grey","green","grey","grey","grey"), main="Income distribution among education levels")
 
 ?sm
 library(sm)
@@ -176,8 +180,8 @@ legend(locator(1), levels(education_legend), fill=colfill)
 ####################################### categorical & categorical
 # bought a bike vs education
 ?xtabs
-xtabs(~Education+Purchased.Bike, bike_buyers)
-plot(xtabs(~Education+Purchased.Bike, bike_buyers), main="Bike Buyers and Education Levels")
+xtabs_bike = xtabs(~Education+Purchased.Bike, bike_buyers)
+plot(xtabs_bike, main="Bike Buyers and Education Levels")
 
 # bought a bike vs occupation
 xtabs(~Occupation+Purchased.Bike, bike_buyers)
