@@ -128,7 +128,7 @@ summary(data.combined[1:891,"Age"])
 
 # Lot's of NAs...what should we do?
 
-
+data.combined$Age[is.na(data.combined$Age)] = median(data.combined$Age, na.rm=TRUE)
 
 
 
@@ -179,7 +179,7 @@ temp.parch <- c(train$Parch, test$Parch)
 
 # Alright! See if you can create a factor variable to calculate the family size (Family.Size) using the above variables
 
-
+data.combined$Family.Size = as.factor(temp.sibsp + temp.parch + 1)
 
 
 
@@ -308,7 +308,7 @@ varImpPlot(rf.5)
 
 
 # Build Random Forest using pclass, title, sibsp, & family.size
-rf.model.6 <- data.combined[1:891, c("Pclass", "Title", "SibSp", "Family.Size")]
+rf.model.6 <- data.combined[1:891, c("Pclass", "Title", "Sex", "Family.Size")]
 
 set.seed(123)
 rf.6 <- randomForest(x = rf.model.6, y = rf.label, importance = TRUE, ntree = 1000)
@@ -348,7 +348,6 @@ varImpPlot(rf.8)
 test.submit <- data.combined[892:1309, c("Title", "Pclass", "Family.Size", "Age", "Sex", "SibSp", "Parch")]
 
 
-
 # Make predictions and submit for scoring
 rf.5.prediction <- predict(rf.5, test.submit, type = "class")
 table(rf.5.prediction)
@@ -376,11 +375,11 @@ library(e1071)
 # Create dataset for rows with Survived values
 newTrain <- data.combined[1:891,]
 
-
+set.seed(123)
 # Split data 70% train 30% validate
 splitTrain <- createDataPartition(newTrain$Survived, p = .7, list = FALSE)
-
-
+View(newTrain)
+newTrain
 # Survived Factor has 3 levels but should be 2
 newTrain$Survived <- droplevels(newTrain$Survived)
 
@@ -393,12 +392,11 @@ nrow(trainData)
 nrow(testData)
 
 
+
 # Build models with CARET
 set.seed(123)
 
-rf.9 <- train(Survived ~ Pclass + Title,
-              data = trainData,
-              method = "rf")
+rf.9 <- train(Survived ~ Pclass + Title, data = trainData,method = "rf")
 rf.9
 
 
@@ -415,10 +413,7 @@ set.seed(123)
 
 ctrl.1 <- trainControl(method = "repeatedcv", repeats = 3, number = 5)
 
-rf.10 <- train(Survived ~ Pclass + Title,
-               data = newTrain,
-               method = "rf",
-               trControl = ctrl.1)
+rf.10 <- train(Survived ~ Pclass + Title,data = newTrain,method = "rf",trControl = ctrl.1)
 rf.10
 
 confusionMatrix(rf.10)
@@ -431,8 +426,13 @@ confusionMatrix(data = rf.10.prediction, testData$Survived)
 
 
 # What does Regression model output look like? Let's try to predict Fare (Decison Tree Regression)
-rpart.2 <- train(Fare ~.,
-                 data = newTrain,
-                 method = "rpart",
-                 trControl = ctrl.1)
+rpart.2 <- train(Fare ~.,data = newTrain, method = "rpart",trControl = ctrl.1)
 rpart.2
+
+
+
+
+
+
+
+

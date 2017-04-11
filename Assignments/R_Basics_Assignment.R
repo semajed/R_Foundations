@@ -25,3 +25,18 @@ str(sales_df)
 ## What is the code you used to get to find these results?
 
 
+auction = read.csv("assets/auction.csv")
+View(auction)
+library(dplyr)
+f2 = auction[which(auction$Nationality=="AMERICAN"),]
+f2 = filter(auction, Nationality == "AMERICAN")
+?filter
+head(f2)
+table(f2$Make)
+View(f2)
+plot(f2$Make)
+
+
+
+
+

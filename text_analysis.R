@@ -1,3 +1,6 @@
+## LOAD THESE PACKAGES
+## DOWNLOAD "ghandi_speech2.txt"
+
 library("RDSTK")
 library("readr")
 library("twitteR")
@@ -10,7 +13,7 @@ library("ggplot2")
 
 ??syuzhet
 ??readr
-??twitteR
+
 
 gandhi_speech = read_file("assets/gandhi_speech2.txt")
 View(gandhi_speech)
@@ -21,7 +24,9 @@ View(gandhi_speech)
 
 ### polarity and sentiment ###
 ?get_nrc_sentiment
+
 g_scores = get_nrc_sentiment(gandhi_speech)
+g_scores
 class(g_scores)
 g_polarity = g_scores[1,9:10]
 g_polarity
@@ -44,6 +49,8 @@ g_sentiment
 
 ## visualize polarity
 class(g_polarity)
+plot(g_polarity)
+## what's happening here?
 
 g_polarity = data.matrix(g_polarity, rownames.force = TRUE)
 barplot(g_polarity)
@@ -62,6 +69,8 @@ barplot(g_polarity)
 
 ## visualize sentiment
 class(g_sentiment)
+plot(g_sentiment)
+
 g_sentiment = data.matrix(g_sentiment, rownames.force = TRUE)
 barplot(g_sentiment)
 
@@ -81,8 +90,11 @@ barplot(g_sentiment)
 
 
 ### Break it down by sentence ###
+??get_sentences
 g_speech_sen = get_sentences(gandhi_speech)
 g_speech_sen
+
+??get_sentiment
 sentiment_vector = get_sentiment(g_speech_sen, method="syuzhet")
 sentiment_vector
 summary(sentiment_vector)
