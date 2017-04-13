@@ -1,5 +1,9 @@
+## author: James Dayhuff, Winter 2017 ##
+## course: Data Analytics in R ##
 
-#### Practice on a real dataset ####
+
+
+#### Practice on dataset ####
 
 bike_buyers = read.csv("assets/bike_buyers.csv")
 

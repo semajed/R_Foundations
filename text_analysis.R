@@ -1,3 +1,7 @@
+## author: James Dayhuff, Winter 2017 ##
+## course: Data Analytics in R ##
+
+
 ## LOAD THESE PACKAGES
 ## DOWNLOAD "ghandi_speech2.txt"
 
@@ -28,6 +32,7 @@ View(gandhi_speech)
 g_scores = get_nrc_sentiment(gandhi_speech)
 g_scores
 class(g_scores)
+
 g_polarity = g_scores[1,9:10]
 g_polarity
 g_sentiment = g_scores[1,1:8]
@@ -53,7 +58,9 @@ plot(g_polarity)
 ## what's happening here?
 
 g_polarity = data.matrix(g_polarity, rownames.force = TRUE)
+
 barplot(g_polarity)
+
 
 
 
@@ -112,8 +119,21 @@ boxplot(sentiment_vector)
 
 ## What was the most positive sentence in the whole paragraph?
 max(sentiment_vector)
+
 sentence_sentiment = data.frame(g_speech_sen, sentiment_vector)
+
 View(sentence_sentiment)
+
+
+
+
+
+
+
+
+
+
+
 
 which.max(sentence_sentiment$sentiment_vector)
 
@@ -196,10 +216,11 @@ class(chickfila)
 
 
 
-
+?strip_retweets
 chickfila = strip_retweets(chickfila)
 
 ## change to dataframe
+?twListToDF
 chickfila = twListToDF(chickfila)
 class(chickfila)
 View(chickfila)
@@ -218,6 +239,7 @@ head(chickfila_hashtags)
 
 ## cleaning twitter
 cleaned_tweets = rm_hash(chickfila$text)
+class(cleaned_tweets)
 cleaned_tweets = as.matrix(cleaned_tweets)
 ?rm_tag
 cleaned_tweets= rm_tag(cleaned_tweets)
@@ -227,6 +249,7 @@ cleaned_tweets = rm_url(cleaned_tweets)
 cleaned_tweets = as.matrix(cleaned_tweets)
 
 cleaned_tweets
+cleaned_tweets = cleaned_tweets[-2,]
 
 ?get_sentiment
 chickfila_sentiment = get_sentiment(cleaned_tweets)
@@ -243,6 +266,7 @@ View(chickfila_analysis)
 ## other things you can do with the Twitter package
 ?getUser
 chickfila_user = getUser("chickfila")
+chickfila_user
 chickfila_user$description
 chickfila_user$getFollowersCount()
 chickfila_user$getFriends(n=5)
@@ -252,7 +276,7 @@ chickfila_user$getFavorites(n=5)
 ??userTimeline
 potus_timeline = userTimeline("POTUS")
 
-
+potus_timeline
 
 
 
@@ -265,6 +289,7 @@ potus_timeline = userTimeline("POTUS")
 
 ?getTrends
 avail_trends = availableTrendLocations()
+avail_trends
 
 closestTrendLocations(40.2338, -111.6585)
 

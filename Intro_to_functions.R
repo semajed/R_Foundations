@@ -1,3 +1,6 @@
+## author: James Dayhuff, Winter 2017 ##
+## course: Data Analytics in R ##
+
 ## functions help save you time and code by saving a repetitive action into a reusable chunk of code
 
 

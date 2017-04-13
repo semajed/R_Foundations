@@ -1,4 +1,5 @@
-
+## author: James Dayhuff, Winter 2017 ##
+## course: Data Analytics in R ##
 
 ## five most used data types
 

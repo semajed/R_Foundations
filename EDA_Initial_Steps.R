@@ -1,3 +1,7 @@
+## author: James Dayhuff, Winter 2017 ##
+## course: Data Analytics in R ##
+
+
 ##### Why do EDA? Exploratory Data Analysis ############
 # Understand variables
 # Find patterns in data

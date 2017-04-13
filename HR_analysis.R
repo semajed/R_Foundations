@@ -1,3 +1,8 @@
+## author: James Dayhuff, Winter 2017 ##
+## course: Data Analytics in R ##
+
+## this file was not used for class examples or lectures ##
+
 
 hr_anl <- read.csv("assets/HR_comma_sep.csv")
 

@@ -1,3 +1,8 @@
+## author: James Dayhuff, Winter 2017 ##
+## course: Data Analytics in R ##
+
+
+
 #### BEFORE WE BEGIN ####
 ## Rstudio wants to know where to save your files. Create a project to make that easier. ##
 ## Go download "sales_per_year_per_state" from learningsuite -> content

@@ -1,7 +1,5 @@
-## data moment
-## schedule - submitting data moment, checkpoint 1, r basics assignment open for a week
-## content: videos
-## github extra credit
+## author: James Dayhuff, Winter 2017 ##
+## course: Data Analytics in R ##
 
 
 

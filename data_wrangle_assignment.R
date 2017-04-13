@@ -1,3 +1,8 @@
+## author: James Dayhuff, Winter 2017 ##
+## course: Data Analytics in R ##
+
+
+
 #### Assignment ####
 messy_data = data.frame(
   office_location = c("NY_New York", "TX_Houston", "CA_Los Angeles", "CO_Denver"),
