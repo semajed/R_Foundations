@@ -1,3 +1,6 @@
+## author: James Dayhuff, Winter 2017 ##
+## course: Data Analytics in R ##
+
 
 library("tidyr")
 library("dplyr")
